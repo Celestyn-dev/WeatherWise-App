@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WeatherWise – Your Simple Weather App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="default">
+
+  <!-- Dark Mode Toggle -->
+  <div class="dark-toggle-container">
+    <button id="darkToggle" class="favorite-btn">🌗 Toggle Dark Mode</button>
+  </div>
+
+  <!-- Main Card: Two-Column Layout -->
+  <div class="card-container">
+    
+    <!-- Left Side: Weather Overview -->
+    <div class="card-left">
+      <img id="conditionIcon" src="images/clear.png" alt="Weather Icon" class="main-weather-icon" />
+      <h1 id="temperature" class="temp">--°C</h1>
+      <h2 id="description" class="weather-desc">Weather Description</h2>
+    </div>
+
+    <!-- Right Side: Search and Details -->
+    <div class="card-right">
+
+      <!-- Search Bar -->
+      <div class="search-box">
+        <input 
+          type="text" 
+          class="search-input" 
+          id="cityInput"
+          placeholder="Search for a city..." 
+          spellcheck="false"
+        />
+        <button id="searchBtn">
+          <img src="images/search.png" alt="Search Icon" />
+        </button>
+      </div>
+
+      <!-- City Name -->
+      <h2 id="cityName" class="city">Search a city</h2>
+
+      <!-- Weather Details -->
+      <div class="details">
+        <div class="detail-item">
+          <img src="images/humidity.png" alt="Humidity Icon" />
+          <p><span id="humidity">--%</span> Humidity</p>
+        </div>
+        <div class="detail-item">
+          <img src="images/wind.png" alt="Wind Icon" />
+          <p><span id="windSpeed">-- km/h</span> Wind</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Favorite Cities List -->
+  <div class="favorites-container" id="favoritesList">
+    <!-- Dynamic favorite city buttons will appear here -->
+  </div>
+
+  <!-- JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>
