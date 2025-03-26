@@ -26,7 +26,35 @@
         <h2 id="description" class="weather-desc">Weather Description</h2>
       </div>
   
-
+    <!-- Right Side: Search + Details -->
+    <div class="card-right">
+        <div class="search-box">
+          <input 
+            type="text" 
+            class="search-input" 
+            id="cityInput"
+            placeholder="Search for a city..." 
+            spellcheck="false"
+          />
+          <button id="searchBtn">
+            <img src="images/search.png" alt="Search Icon" />
+          </button>
+        </div>
+  
+        <h2 id="cityName" class="city">Search a city</h2>
+  
+        <div class="details">
+          <div class="detail-item">
+            <img src="images/humidity.png" alt="Humidity Icon" />
+            <p><span id="humidity">--%</span> Humidity</p>
+          </div>
+          <div class="detail-item">
+            <img src="images/wind.png" alt="Wind Icon" />
+            <p><span id="windSpeed">-- km/h</span> Wind</p>
+          </div>
+        </div>
+      </div>
+  
 <body>
 
 </body>
