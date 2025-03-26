@@ -1,0 +1,219 @@
+/* ====== Global Styles ====== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  body {
+    background: #f5f5f5;
+    color: #080808;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 15px;
+    transition: background 0.5s ease;
+  }
+  
+  /* ====== Dark Mode Toggle ====== */
+  .dark-toggle-container {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .favorite-btn {
+    background-color: #ffffff;
+    color: #333333;
+    border: none;
+    padding: 10px 20px;
+    margin: 8px;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  
+  .favorite-btn:hover {
+    background-color: #ddd;
+    color: #000;
+  }
+  
+  /* ====== Card Container ====== */
+  .card-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 900px;
+    background: linear-gradient(135deg, #980505, #3e1290);
+    color: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    transition: background 0.3s ease;
+  }
+  
+  /* ====== Left Column ====== */
+  .card-left, .card-right {
+    flex: 1;
+    padding: 30px;
+  }
+  
+  .card-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .main-weather-icon {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .temp {
+    font-size: 48px;
+    margin: 20px 0 10px;
+    color: #ffdd57;
+  }
+  
+  .weather-desc {
+    font-size: 18px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    text-transform: capitalize;
+  }
+  
+  /* ====== Right Column ====== */
+  .card-right {
+    background-color: transparent;
+  }
+  
+  .search-box {
+    display: flex;
+    margin-bottom: 20px;
+    gap: 10px;
+  }
+  
+  .search-input {
+    flex: 1;
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: none;
+    background: #ebfffc;
+    font-size: 16px;
+    color: #080808;
+  }
+  
+  .search-box button {
+    width: 60px;
+    height: 60px;
+    background-color: #ebfffc;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .search-box img {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .city {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #ffe066;
+  }
+  
+  /* ====== Weather Details ====== */
+  .details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .detail-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+  }
+  
+  .detail-item img {
+    width: 32px;
+    height: 32px;
+  }
+  
+  /* ====== Favorites Section ====== */
+  .favorites-container {
+    margin-top: 30px;
+    max-width: 900px;
+    width: 100%;
+    color: #3e1290;
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  /* ====== Responsive Layout ====== */
+  @media (max-width: 768px) {
+    .card-container {
+      flex-direction: column;
+    }
+  
+    .card-left, .card-right {
+      text-align: center;
+      padding: 20px;
+    }
+  
+    .details {
+      align-items: center;
+    }
+  
+    .search-box {
+      flex-direction: column;
+    }
+  
+    .search-input, .search-box button {
+      width: 100%;
+      border-radius: 30px;
+    }
+  }
+  
+  /* ====== Dark Mode ====== */
+  body.dark-mode {
+    background: #121212;
+    color: #e0e0e0;
+  }
+  
+  body.dark-mode .card-container {
+    background: linear-gradient(135deg, #333, #222);
+  }
+  
+  body.dark-mode .search-input {
+    background: #222;
+    color: #eee;
+  }
+  
+  body.dark-mode .search-box button {
+    background: #333;
+  }
+  
+  body.dark-mode .weather-desc,
+  body.dark-mode .detail-item {
+    background: rgba(255, 255, 255, 0.1);
+    color: #e0e0e0;
+  }
+  
