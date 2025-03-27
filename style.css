@@ -1,245 +1,248 @@
-/* ====== Global Styles ====== */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-  }
-  
-  body {
-    background: #f5f5f5;
-    color: #080808;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 30px 15px;
-    transition: background 0.5s ease;
-  }  
-  
-  /* ====== Dark Mode Toggle ====== */
-  .dark-toggle-container {
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .favorite-btn {
-    background-color: #ffffff;
-    color: #333333;
-    border: none;
-    padding: 10px 20px;
-    margin: 8px;
-    border-radius: 25px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s ease, color 0.3s ease;
-  }
-  
-  .favorite-btn:hover {
-    background-color: #ddd;
-    color: #000;
-  }
-  
-  /* ====== Card Container ====== */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 15px;
+  transition: background 0.5s ease;
+}
+
+body.default {
+  background: linear-gradient(to top right, #3a7bd5, #00d2ff);
+}
+
+.dark-toggle-container {
+  margin-bottom: 20px;
+}
+
+.favorite-btn {
+  background-color: #ffcc00;
+  border: none;
+  padding: 10px 20px;
+  color: #333;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.favorite-btn:hover {
+  background-color: #ffdd33;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 95%;
+  max-width: 1000px;
+  min-height: 420px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.card-left, .card-right {
+  flex: 1;
+  padding: 30px;
+}
+
+.card-left {
+  background: linear-gradient(to bottom, #4facfe, #00f2fe);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.main-weather-icon {
+  width: 140px;
+  height: 140px;
+  margin-bottom: 15px;
+}
+
+.temp {
+  font-size: 56px;
+  font-weight: 700;
+  color: #01579b;
+}
+
+.weather-desc {
+  font-size: 20px;
+  background-color: #ffffff;
+  color: #0288d1;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-right {
+  background-color: #ffffff;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.search-box {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid #69b2d4;
+  font-size: 16px;
+}
+
+.search-box button {
+  margin-left: 10px;
+  padding: 10px;
+  background-color: #4fc3f7;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.search-box img {
+  width: 20px;
+  height: 20px;
+}
+
+.city {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #0277bd;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #0ba7d7;
+  padding: 10px;
+  border-radius: 10px;
+  color: #03131e;
+}
+
+.detail-item img {
+  width: 32px;
+  height: 32px;
+}
+
+.favorites-container {
+  margin-top: 30px;
+  max-width: 1000px;
+  width: 100%;
+  color: #01579b;
+  text-align: left;
+}
+
+/* Favorite city styles */
+.favorite-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.remove-btn {
+  color: red;
+  cursor: pointer;
+  font-size: 16px;
+  user-select: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
   .card-container {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    max-width: 900px;
-    background: linear-gradient(135deg, #980505, #3e1290);
-    color: #ffffff;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0,0,0,0.2);
-    transition: background 0.3s ease;
+    flex-direction: column;
   }
-  
-  /* ====== Left Column ====== */
+
   .card-left, .card-right {
-    flex: 1;
-    padding: 30px;
+    text-align: center;
+    padding: 20px;
   }
-  
-  .card-left {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .main-weather-icon {
-    width: 120px;
-    height: 120px;
-  }
-  
-  .temp {
-    font-size: 48px;
-    margin: 20px 0 10px;
-    color: #ffdd57;
-  }
-  
-  .weather-desc {
-    font-size: 18px;
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #fff;
-    padding: 6px 16px;
-    border-radius: 20px;
-    font-weight: 600;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
-    text-transform: capitalize;
-  }
-  
-  /* ====== Right Column ====== */
-  .card-right {
-    background-color: transparent;
-  }
-  
-  .search-box {
-    display: flex;
-    margin-bottom: 20px;
-    gap: 10px;
-  }
-  
-  .search-input {
-    flex: 1;
-    padding: 10px 20px;
-    border-radius: 30px;
-    border: none;
-    background: #ebfffc;
-    font-size: 16px;
-    color: #080808;
-  }
-  
-  .search-box button {
-    width: 60px;
-    height: 60px;
-    background-color: #ebfffc;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .search-box img {
-    width: 20px;
-    height: 20px;
-  }
-  
-  .city {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #ffe066;
-  }
-  
-  /* ====== Weather Details ====== */
+
   .details {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .detail-item {
-    display: flex;
     align-items: center;
-    gap: 15px;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 10px;
-    border-radius: 10px;
-    color: #fff;
   }
-  
-  .detail-item img {
-    width: 32px;
-    height: 32px;
+}
+
+/* Weather-Based Backgrounds */
+body.clear-day {
+  background: linear-gradient(to top right, #ffaf7b, #d76d77);
+}
+
+body.clear-night {
+  background: linear-gradient(to top right, #b1bed6, #2a5298);
+}
+
+body.clouds {
+  background: linear-gradient(to top right, #bdc3c7, #2c3e50);
+}
+
+body.rain {
+  background: linear-gradient(to top right, #091529, #9ecee4);
+}
+
+body.drizzle {
+  background: linear-gradient(to top right, #89f7fe, #66a6ff);
+}
+
+body.snow {
+  background: linear-gradient(to top right, #e0eafc, #cfdef3);
+}
+
+body.mist {
+  background: linear-gradient(to top right, #dfe9f3, #ffffff);
+}
+
+body.thunderstorm {
+  background: linear-gradient(to top right, #232526, #414345);
+}
+
+body.dark-mode {
+  filter: brightness(0.85) contrast(1.1);
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
   }
-  
-  /* ====== Favorites Section ====== */
-  .favorites-container {
-    margin-top: 30px;
-    max-width: 900px;
-    width: 100%;
-    color: #3e1290;
-    text-align: left;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  /* ====== Responsive Layout ====== */
-  @media (max-width: 768px) {
-    .card-container {
-      flex-direction: column;
-    }
-  
-    .card-left, .card-right {
-      text-align: center;
-      padding: 20px;
-    }
-  
-    .details {
-      align-items: center;
-    }
-  
-    .search-box {
-      flex-direction: column;
-    }
-  
-    .search-input, .search-box button {
-      width: 100%;
-      border-radius: 30px;
-    }
-  }
-  
-  /* ====== Dark Mode ====== */
-  body.dark-mode {
-    background: #121212;
-    color: #e0e0e0;
-  }
-  
-  body.dark-mode .card-container {
-    background: linear-gradient(135deg, #333, #222);
-  }
-  
-  body.dark-mode .search-input {
-    background: #222;
-    color: #eee;
-  }
-  
-  body.dark-mode .search-box button {
-    background: #333;
-  }
-  
-  body.dark-mode .weather-desc,
-  body.dark-mode .detail-item {
-    background: rgba(255, 255, 255, 0.1);
-    color: #e0e0e0;
-  }
-  .favorite-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    gap: 10px;
-  }
-  
-  .favorite-btn {
-    background-color: #00bcd4;
-    color: white;
-    padding: 6px 12px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-  
-  .favorite-btn:hover {
-    background-color: #0196aa;
-  }
-  
-  .remove-btn {
-    color: red;
-    cursor: pointer;
-    font-size: 16px;
-    user-select: none;
-  }
-  
+}
