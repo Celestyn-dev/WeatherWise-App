@@ -16,8 +16,9 @@ const favoritesList = document.getElementById('favoritesList');
 
 let favoriteCities = JSON.parse(localStorage.getItem('favoriteCities')) || [];
 
+// Function to update background based on weather and time
 function updateBackground(condition, iconCode) {
-  document.body.className = ''; 
+  document.body.className = '';
   const isNight = iconCode.includes('n');
 
   switch (condition.toLowerCase()) {
@@ -50,6 +51,7 @@ function updateBackground(condition, iconCode) {
   }
 }
 
+// Maps icon codes to local image names
 function getImageForCondition(iconCode) {
   if (iconCode.includes('01')) return 'clear';
   if (iconCode.includes('02') || iconCode.includes('03') || iconCode.includes('04')) return 'clouds';
@@ -61,6 +63,7 @@ function getImageForCondition(iconCode) {
   return 'clear';
 }
 
+// Main weather fetch function
 async function getWeather(city) {
   try {
     const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
@@ -68,11 +71,12 @@ async function getWeather(city) {
 
     const data = await response.json();
 
+    // Display weather info
     cityName.textContent = data.name;
     temperature.textContent = Math.round(data.main.temp) + '°C';
     description.textContent = data.weather[0].description;
-    humidity.textContent = data.main.humidity;
-    windSpeed.textContent = data.wind.speed;
+    humidity.textContent = data.main.humidity + '%';            // ✔️ Correct format
+    windSpeed.textContent = data.wind.speed + ' km/h';          // ✔️ Correct format
 
     const iconCode = data.weather[0].icon;
     const mainCondition = data.weather[0].main;
@@ -82,7 +86,6 @@ async function getWeather(city) {
 
     sessionStorage.setItem('lastCity', data.name);
 
-    // Save to favorites if not already present
     if (!favoriteCities.includes(data.name)) {
       favoriteCities.push(data.name);
       updateFavorites();
@@ -93,11 +96,13 @@ async function getWeather(city) {
   }
 }
 
+// Update localStorage and render favorites
 function updateFavorites() {
   localStorage.setItem('favoriteCities', JSON.stringify(favoriteCities));
   renderFavorites();
 }
 
+// Show favorite buttons with remove option
 function renderFavorites() {
   favoritesList.innerHTML = '';
 
@@ -122,11 +127,13 @@ function renderFavorites() {
   });
 }
 
+// Remove favorite
 function removeFavorite(city) {
   favoriteCities = favoriteCities.filter(item => item !== city);
   updateFavorites();
 }
 
+// Event listeners
 searchBtn.addEventListener('click', () => {
   const city = searchBox.value.trim();
   if (city) {
@@ -145,6 +152,7 @@ darkToggle.addEventListener('click', () => {
   document.body.classList.toggle('dark-mode');
 });
 
+// On page load
 window.addEventListener('DOMContentLoaded', () => {
   const lastCity = sessionStorage.getItem('lastCity');
   if (lastCity) getWeather(lastCity);
